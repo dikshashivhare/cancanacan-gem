@@ -1,0 +1,28 @@
+nav.navbar.navbar-expand-lg.navbar-light
+  a.navbar-brand.logo-text href="#"  Amazon-Store
+  button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button" 
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item
+       = link_to "Home", root_path, class: "nav-link" 
+      li.nav-item
+       = link_to "Products", products_path, class: "nav-link" 
+      li.nav-item
+       = link_to "Add Products", new_product_path, class: "nav-link" 
+       -if current_user.try(:admin?) 
+      li.nav-item
+       = link_to "Role Privilage", home_role_privilage_path, class: "nav-link" 
+      li.nav-item
+       = link_to "User Privilage", home_user_privilage_path, class: "nav-link" 
+      
+    ul.navbar-nav.my-lg-0
+      -if user_signed_in? 
+        li
+          = link_to('Logout', destroy_user_session_path, class: "btn btn-secondary", method: :delete) 
+      -else 
+        li
+          = link_to "Sign up", new_user_registration_path, class: "btn btn-secondary", :style =>"margin-right:20px" 
+        li
+          = link_to 'Login', new_user_session_path,class: "btn btn-secondary" ,:style =>"margin-right:20px"
+      

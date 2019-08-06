@@ -1,0 +1,6 @@
+.col-md-4.offset-md-4
+  .card.mt-5
+    h1.card-header New Product
+    .card-body
+      = render 'form', product: @product 
+      = link_to 'Back', products_path 

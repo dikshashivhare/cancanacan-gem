@@ -1,0 +1,36 @@
+.container
+  table.table.table-bordered
+    tr
+      th #
+      th View
+      th Add
+      th Edit
+      th Delete
+    -User.order(:role).each do |user| 
+     tr
+      td = user.role 
+      td
+        -if user.access_to_view 
+         input.access_check checked="" data-action-name="view" data-role=( user.role) data-user-id=( user.id) type="checkbox" 
+        -else 
+         input.access_check data-action-name="view" data-role=( user.role) data-user-id=( user.id ) type="checkbox"
+      
+      td
+        -if user.access_to_add 
+         input.access_check checked="" data-action-name="add" data-role=( user.role) data-user-id=( user.id ) type="checkbox" 
+        -else 
+         input.access_check data-action-name="add" data-role=( user.role) data-user-id=( user.id ) type="checkbox" 
+       
+      td
+        -if user.access_to_edit 
+         input.access_check checked="" data-action-name="edit" data-role=( user.role) data-user-id=( user.id ) type="checkbox" 
+        -else 
+         input.access_check data-action-name="edit" data-role=( user.role) data-user-id=( user.id ) type="checkbox" 
+       
+      td
+       -if user.access_to_delete 
+         input.access_check checked="" data-action-name="delete" data-role=( user.role) data-user-id=( user.id ) type="checkbox" 
+       -else 
+         input.access_check data-action-name="delete" data-role=(user.role) data-user-id=( user.id) type="checkbox" 
+        
+      

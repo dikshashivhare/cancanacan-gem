@@ -1,0 +1,25 @@
+= form_with(model: product, local: true) do |form| 
+  -if product.errors.any? 
+
+    h2 = "prohibited this product from being saved:"
+    ul
+      - product.errors.full_messages.each do |message| 
+       li 
+         = message 
+
+  .form-group
+    = form.label :name 
+    = form.text_field :name, class: 'form-control' 
+  .form-group
+    = form.label :description 
+    = form.text_area :description, class: 'form-control' 
+  .form-group
+    = form.label :price 
+    = form.text_field :price, class: 'form-control' 
+  .form-group
+    = form.label :image 
+    br/
+    = form.file_field :image 
+  .actions
+    = form.submit  class: 'btn btn-primary' 
+
